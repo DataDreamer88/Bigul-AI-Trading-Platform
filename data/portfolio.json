@@ -1,0 +1,64 @@
+{
+  "portfolio": {
+    "totalValue": 580000,
+    "totalInvested": 535000,
+    "unrealizedPnL": 45000,
+    "holdings": [
+      {
+        "symbol": "RELIANCE",
+        "name": "Reliance Industries",
+        "quantity": 10,
+        "avgPrice": 2730,
+        "currentPrice": 2850,
+        "investedAmount": 27300,
+        "currentValue": 28500,
+        "pnl": 1200,
+        "pnlPercent": 4.4
+      },
+      {
+        "symbol": "HDFC",
+        "name": "HDFC Bank",
+        "quantity": 8,
+        "avgPrice": 2400,
+        "currentPrice": 2680,
+        "investedAmount": 19200,
+        "currentValue": 21440,
+        "pnl": 2240,
+        "pnlPercent": 11.7
+      },
+      {
+        "symbol": "TCS",
+        "name": "Tata Consultancy Services",
+        "quantity": 5,
+        "avgPrice": 4100,
+        "currentPrice": 4420,
+        "investedAmount": 20500,
+        "currentValue": 22100,
+        "pnl": 1600,
+        "pnlPercent": 7.8
+      },
+      {
+        "symbol": "INFY",
+        "name": "Infosys",
+        "quantity": 15,
+        "avgPrice": 1850,
+        "currentPrice": 2020,
+        "investedAmount": 27750,
+        "currentValue": 30300,
+        "pnl": 2550,
+        "pnlPercent": 9.2
+      },
+      {
+        "symbol": "ASIANPAINT",
+        "name": "Asian Paints",
+        "quantity": 3,
+        "avgPrice": 3200,
+        "currentPrice": 3650,
+        "investedAmount": 9600,
+        "currentValue": 10950,
+        "pnl": 1350,
+        "pnlPercent": 14.1
+      }
+    ]
+  }
+}

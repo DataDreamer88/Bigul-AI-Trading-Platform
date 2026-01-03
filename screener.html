@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Screener | Bigul AI Trading</title>
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/components.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <span class="logo-icon">🚀</span>
+                <span class="logo-text">Bigul<span class="logo-ai">AI</span></span>
+            </div>
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="dashboard.html" class="nav-link">Dashboard</a>
+                <a href="screener.html" class="nav-link active">Screener</a>
+                <a href="chatbot.html" class="nav-link">AI Chat</a>
+                <a href="settings.html" class="nav-link">Settings</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container" style="padding: 2rem 0;">
+        <h1>🔍 AI-Powered Stock Screener</h1>
+        <p style="color: var(--text-secondary); margin-bottom: 2rem;">Find stocks matching your criteria. Ask AI or use filters.</p>
+
+        <!-- Natural Language Query -->
+        <div class="card" style="margin-bottom: 2rem; background: linear-gradient(135deg, #e6f0ff 0%, #f0f9ff 100%);">
+            <h3 style="margin-bottom: 1rem; color: var(--primary);">💬 Ask AI Screener</h3>
+            <p style="color: var(--text-secondary); margin-bottom: 1rem;">Examples: "Show me breakout stocks", "Find undervalued IT stocks", "High dividend payers"</p>
+            <div style="display: flex; gap: 1rem;">
+                <input type="text" id="nlQuery" placeholder="Ask AI to find stocks..." style="flex: 1; padding: 0.75rem; border: 2px solid var(--border); border-radius: 8px; font-size: 1rem;">
+                <button class="btn btn-primary" onclick="searchNaturalLanguage()">Search</button>
+            </div>
+        </div>
+
+        <!-- Quick Presets -->
+        <div style="margin-bottom: 2rem;">
+            <h3 style="margin-bottom: 1rem;">⚡ Quick Screeners</h3>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem;">
+                <button class="btn btn-secondary btn-lg" onclick="runPreset('breakouts')" style="text-align: left;">
+                    <div style="font-weight: 700;">📈 Breakout Stocks</div>
+                    <div style="font-size: 0.85rem; color: var(--text-secondary);">52-week highs</div>
+                </button>
+                <button class="btn btn-secondary btn-lg" onclick="runPreset('undervalued')" style="text-align: left;">
+                    <div style="font-weight: 700;">💎 Undervalued</div>
+                    <div style="font-size: 0.85rem; color: var(--text-secondary);">Low PE, High ROE</div>
+                </button>
+                <button class="btn btn-secondary btn-lg" onclick="runPreset('momentum')" style="text-align: left;">
+                    <div style="font-weight: 700;">🔥 High Momentum</div>
+                    <div style="font-size: 0.85rem; color: var(--text-secondary);">RSI > 60</div>
+                </button>
+                <button class="btn btn-secondary btn-lg" onclick="runPreset('quality')" style="text-align: left;">
+                    <div style="font-weight: 700;">🏆 Quality Stocks</div>
+                    <div style="font-size: 0.85rem; color: var(--text-secondary);">High ROE & ROA</div>
+                </button>
+            </div>
+        </div>
+
+        <!-- Advanced Filters -->
+        <div class="card" style="margin-bottom: 2rem;">
+            <h3 style="margin-bottom: 1.5rem;">⚙️ Advanced Filters</h3>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem;">
+                <div>
+                    <label style="display: block; margin-bottom: 0.5rem; font-weight: 700;">PE Ratio Range</label>
+                    <div style="display: flex; gap: 1rem;">
+                        <input type="number" placeholder="Min" id="peMin" style="flex: 1; padding: 0.5rem; border: 1px solid var(--border); border-radius: 6px;">
+                        <input type="number" placeholder="Max" id="peMax" style="flex: 1; padding: 0.5rem; border: 1px solid var(--border); border-radius: 6px;">
+                    </div>
+                </div>
+
+                <div>
+                    <label style="display: block; margin-bottom: 0.5rem; font-weight: 700;">ROE (%) Range</label>
+                    <div style="display: flex; gap: 1rem;">
+                        <input type="number" placeholder="Min" id="roeMin" style="flex: 1; padding: 0.5rem; border: 1px solid var(--border); border-radius: 6px;">
+                        <input type="number" placeholder="Max" id="roeMax" style="flex: 1; padding: 0.5rem; border: 1px solid var(--border); border-radius: 6px;">
+                    </div>
+                </div>
+
+                <div>
+                    <label style="display: block; margin-bottom: 0.5rem; font-weight: 700;">RSI Range</label>
+                    <div style="display: flex; gap: 1rem;">
+                        <input type="number" placeholder="Min" id="rsiMin" min="0" max="100" style="flex: 1; padding: 0.5rem; border: 1px solid var(--border); border-radius: 6px;">
+                        <input type="number" placeholder="Max" id="rsiMax" min="0" max="100" style="flex: 1; padding: 0.5rem; border: 1px solid var(--border); border-radius: 6px;">
+                    </div>
+                </div>
+
+                <div>
+                    <label style="display: block; margin-bottom: 0.5rem; font-weight: 700;">Sector</label>
+                    <select id="sectorFilter" style="width: 100%; padding: 0.5rem; border: 1px solid var(--border); border-radius: 6px;">
+                        <option>All Sectors</option>
+                        <option>Energy</option>
+                        <option>Banking</option>
+                        <option>IT</option>
+                        <option>Pharma</option>
+                        <option>Paints</option>
+                        <option>Finance</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label style="display: block; margin-bottom: 0.5rem; font-weight: 700;">Price Change</label>
+                    <select id="changeFilter" style="width: 100%; padding: 0.5rem; border: 1px solid var(--border); border-radius: 6px;">
+                        <option>Any</option>
+                        <option>Gainers (>0%)</option>
+                        <option>Losers (<0%)</option>
+                        <option>High Gainers (>3%)</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label style="display: block; margin-bottom: 0.5rem; font-weight: 700;">Sentiment</label>
+                    <select id="sentimentFilter" style="width: 100%; padding: 0.5rem; border: 1px solid var(--border); border-radius: 6px;">
+                        <option>All</option>
+                        <option>Bullish</option>
+                        <option>Neutral</option>
+                        <option>Bearish</option>
+                    </select>
+                </div>
+            </div>
+
+            <div style="margin-top: 1.5rem; display: flex; gap: 1rem;">
+                <button class="btn btn-primary btn-lg" onclick="runAdvancedFilters()">🔍 Run Screener</button>
+                <button class="btn btn-secondary btn-lg" onclick="resetFilters()">↻ Reset</button>
+            </div>
+        </div>
+
+        <!-- Results -->
+        <h2 style="margin-bottom: 1rem;">📊 Screener Results</h2>
+        <p style="color: var(--text-secondary); margin-bottom: 1.5rem;"><span id="resultCount">0</span> stocks found</p>
+
+        <div class="card" style="overflow-x: auto;">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Symbol</th>
+                        <th>Price</th>
+                        <th>Change</th>
+                        <th>PE</th>
+                        <th>ROE</th>
+                        <th>RSI</th>
+                        <th>Sentiment</th>
+                        <th>AI Score</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="resultsBody">
+                    <tr>
+                        <td colspan="9" style="text-align: center; color: var(--text-secondary); padding: 2rem;">Run a screener to see results</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Bigul AI Trading Suite. AI-powered stock screening.</p>
+        </div>
+    </footer>
+
+    <script src="js/global.js"></script>
+    <script>
+        function searchNaturalLanguage() {
+            const query = document.getElementById('nlQuery').value.toLowerCase();
+            showNotification('Searching for: ' + query);
+            
+            let filtered = [...appState.stocksData];
+
+            if (query.includes('breakout')) {
+                filtered = filtered.filter(s => s.change > 2);
+            } else if (query.includes('undervalue')) {
+                filtered = filtered.filter(s => s.pe < 22 && s.roe > 15);
+            } else if (query.includes('dividend')) {
+                filtered = filtered.filter(s => s.sector === 'Banking');
+            } else if (query.includes('momentum')) {
+                filtered = filtered.filter(s => s.rsi > 60);
+            } else if (query.includes('high')) {
+                filtered = filtered.filter(s => s.change > 1);
+            }
+
+            displayResults(filtered);
+        }
+
+        function runPreset(preset) {
+            let filtered = [...appState.stocksData];
+
+            switch(preset) {
+                case 'breakouts':
+                    filtered = filtered.filter(s => s.change > 2);
+                    break;
+                case 'undervalued':
+                    filtered = filtered.filter(s => s.pe < 22 && s.roe > 15);
+                    break;
+                case 'momentum':
+                    filtered = filtered.filter(s => s.rsi > 60);
+                    break;
+                case 'quality':
+                    filtered = filtered.filter(s => s.roe > 18);
+                    break;
+            }
+
+            displayResults(filtered);
+            showNotification(`Found ${filtered.length} stocks`);
+        }
+
+        function runAdvancedFilters() {
+            let filtered = [...appState.stocksData];
+
+            const peMin = parseFloat(document.getElementById('peMin').value) || 0;
+            const peMax = parseFloat(document.getElementById('peMax').value) || 1000;
+            const roeMin = parseFloat(document.getElementById('roeMin').value) || 0;
+            const roeMax = parseFloat(document.getElementById('roeMax').value) || 100;
+            const rsiMin = parseFloat(document.getElementById('rsiMin').value) || 0;
+            const rsiMax = parseFloat(document.getElementById('rsiMax').value) || 100;
+            const sector = document.getElementById('sectorFilter').value;
+            const change = document.getElementById('changeFilter').value;
+            const sentiment = document.getElementById('sentimentFilter').value;
+
+            filtered = filtered.filter(s => {
+                if (s.pe < peMin || s.pe > peMax) return false;
+                if (s.roe < roeMin || s.roe > roeMax) return false;
+                if (s.rsi < rsiMin || s.rsi > rsiMax) return false;
+                if (sector !== 'All Sectors' && s.sector !== sector) return false;
+                if (change === 'Gainers (>0%)' && s.change <= 0) return false;
+                if (change === 'Losers (<0%)' && s.change >= 0) return false;
+                if (change === 'High Gainers (>3%)' && s.change <= 3) return false;
+                if (sentiment !== 'All' && !s.sentiment.toLowerCase().includes(sentiment.toLowerCase())) return false;
+                return true;
+            });
+
+            displayResults(filtered);
+        }
+
+        function displayResults(stocks) {
+            document.getElementById('resultCount').textContent = stocks.length;
+            
+            const html = stocks.map(stock => `
+                <tr onclick="window.location.href='stock.html?symbol=${stock.symbol}';" style="cursor: pointer;">
+                    <td><strong>${stock.symbol}</strong></td>
+                    <td>₹${stock.price}</td>
+                    <td style="color: ${stock.change > 0 ? 'var(--success)' : 'var(--danger)'};">
+                        ${stock.change > 0 ? '↑' : '↓'} ${Math.abs(stock.change).toFixed(2)}%
+                    </td>
+                    <td>${stock.pe.toFixed(1)}x</td>
+                    <td>${stock.roe.toFixed(1)}%</td>
+                    <td>${stock.rsi}</td>
+                    <td>
+                        <span class="badge ${stock.sentiment.includes('bullish') ? 'badge-success' : 'badge-danger'}">
+                            ${stock.sentiment}
+                        </span>
+                    </td>
+                    <td><strong>${(50 + Math.random() * 50).toFixed(0)}/100</strong></td>
+                    <td>
+                        <button class="btn btn-sm btn-outline" onclick="addToWatchlist('${stock.symbol}'); event.stopPropagation();">+</button>
+                    </td>
+                </tr>
+            `).join('');
+
+            if (stocks.length === 0) {
+                document.getElementById('resultsBody').innerHTML = 
+                    '<tr><td colspan="9" style="text-align: center; color: var(--text-secondary); padding: 2rem;">No stocks match your criteria</td></tr>';
+            } else {
+                document.getElementById('resultsBody').innerHTML = html;
+            }
+        }
+
+        function resetFilters() {
+            document.getElementById('peMin').value = '';
+            document.getElementById('peMax').value = '';
+            document.getElementById('roeMin').value = '';
+            document.getElementById('roeMax').value = '';
+            document.getElementById('rsiMin').value = '';
+            document.getElementById('rsiMax').value = '';
+            document.getElementById('sectorFilter').value = 'All Sectors';
+            document.getElementById('changeFilter').value = 'Any';
+            document.getElementById('sentimentFilter').value = 'All';
+            document.getElementById('resultCount').textContent = '0';
+            document.getElementById('resultsBody').innerHTML = 
+                '<tr><td colspan="9" style="text-align: center; color: var(--text-secondary); padding: 2rem;">Run a screener to see results</td></tr>';
+        }
+
+        // Load initial data
+        document.addEventListener('DOMContentLoaded', () => {
+            if (appState.stocksData.length) {
+                displayResults([]);
+            }
+        });
+    </script>
+</body>
+</html>

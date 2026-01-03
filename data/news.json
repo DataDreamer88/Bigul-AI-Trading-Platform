@@ -1,0 +1,54 @@
+{
+  "news": [
+    {
+      "id": 1,
+      "title": "RELIANCE: Strong Q3 Results Exceed Expectations",
+      "source": "Economic Times",
+      "date": "2024-01-01",
+      "sentiment": "positive",
+      "stocks": ["RELIANCE"],
+      "impact": "+2.5%",
+      "content": "Reliance Industries reported strong Q3 earnings with net profit of ₹16,500 cr, beating estimates."
+    },
+    {
+      "id": 2,
+      "title": "Banking Sector Rally as RBI Hints Rate Cut",
+      "source": "Business Today",
+      "date": "2024-01-01",
+      "sentiment": "positive",
+      "stocks": ["HDFC", "ICICIBANK", "SBIN"],
+      "impact": "+1.8%",
+      "content": "Banking stocks surge on expectations of RBI rate cut in next policy review."
+    },
+    {
+      "id": 3,
+      "title": "IT Sector Under Pressure on Global Growth Concerns",
+      "source": "Moneycontrol",
+      "date": "2024-01-01",
+      "sentiment": "negative",
+      "stocks": ["TCS", "INFY", "WIPRO"],
+      "impact": "-1.2%",
+      "content": "Global tech spending slowdown weighs on Indian IT stocks as client spending remains cautious."
+    },
+    {
+      "id": 4,
+      "title": "Asian Paints Gains on New Product Launch",
+      "source": "LiveMint",
+      "date": "2024-01-01",
+      "sentiment": "positive",
+      "stocks": ["ASIANPAINT"],
+      "impact": "+3.8%",
+      "content": "Asian Paints launches premium eco-friendly paint range targeting high-end residential market."
+    },
+    {
+      "id": 5,
+      "title": "Larsen & Toubro Bags ₹5,000 Cr Infrastructure Contract",
+      "source": "Reuters",
+      "date": "2024-01-01",
+      "sentiment": "positive",
+      "stocks": ["LT"],
+      "impact": "+1.5%",
+      "content": "L&T wins significant infrastructure project order, strengthening order book for FY2024-25."
+    }
+  ]
+}

@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bigul AI Trading Suite - Revolutionary AI Trading</title>
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/components.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/gsap.min.js"></script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <span class="logo-icon">🚀</span>
+                <span class="logo-text">Bigul<span class="logo-ai">AI</span></span>
+            </div>
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link active">Home</a>
+                <a href="dashboard.html" class="nav-link">Dashboard</a>
+                <a href="screener.html" class="nav-link">Screener</a>
+                <a href="chatbot.html" class="nav-link">AI Chat</a>
+                <a href="settings.html" class="nav-link">Settings</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1 class="hero-title">
+                    <span class="gradient-text">Revolutionary AI Trading</span> Platform
+                </h1>
+                <p class="hero-subtitle">Transform your trading with institutional-grade AI insights. Beat the market with data-driven decisions.</p>
+                
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <span class="stat-value">94.2%</span>
+                        <span class="stat-label">AI Accuracy</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value">₹58L+</span>
+                        <span class="stat-label">Avg Portfolio</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value">38hrs</span>
+                        <span class="stat-label">Time Saved</span>
+                    </div>
+                </div>
+
+                <div class="hero-buttons">
+                    <a href="dashboard.html" class="btn btn-primary btn-lg">
+                        <span>Launch Dashboard</span>
+                        <span class="btn-arrow">→</span>
+                    </a>
+                    <button class="btn btn-secondary btn-lg" onclick="scrollToFeatures()">
+                        Learn More
+                    </button>
+                </div>
+
+                <div class="hero-badges">
+                    <span class="badge">🏆 Industry Leading</span>
+                    <span class="badge">🔒 Enterprise Grade</span>
+                    <span class="badge">📈 Real-Time Data</span>
+                </div>
+            </div>
+
+            <div class="hero-visual">
+                <div class="floating-card card-1">
+                    <div class="card-icon">📊</div>
+                    <p>Live Market Pulse</p>
+                </div>
+                <div class="floating-card card-2">
+                    <div class="card-icon">🤖</div>
+                    <p>AI Insights</p>
+                </div>
+                <div class="floating-card card-3">
+                    <div class="card-icon">⚡</div>
+                    <p>Real-Time Alerts</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Stats -->
+    <section class="quick-stats">
+        <div class="container">
+            <h2 class="section-title">Market Overview</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <span class="stat-icon">📈</span>
+                        <span class="stat-status positive">↑ 2.5%</span>
+                    </div>
+                    <p class="stat-name">NIFTY 50</p>
+                    <p class="stat-value">21,450</p>
+                    <p class="stat-meta">Live</p>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <span class="stat-icon">🏦</span>
+                        <span class="stat-status positive">↑ 1.8%</span>
+                    </div>
+                    <p class="stat-name">BANKNIFTY</p>
+                    <p class="stat-value">52,800</p>
+                    <p class="stat-meta">Live</p>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <span class="stat-icon">💰</span>
+                        <span class="stat-status negative">↓ 0.5%</span>
+                    </div>
+                    <p class="stat-name">Sensex</p>
+                    <p class="stat-value">71,250</p>
+                    <p class="stat-meta">Live</p>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <span class="stat-icon">💻</span>
+                        <span class="stat-status positive">↑ 3.2%</span>
+                    </div>
+                    <p class="stat-name">IT Index</p>
+                    <p class="stat-value">18,950</p>
+                    <p class="stat-meta">Live</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section" id="features">
+        <div class="container">
+            <h2 class="section-title">Powerful AI Features</h2>
+            <div class="features-grid">
+                <!-- Feature 1 -->
+                <div class="feature-card">
+                    <div class="feature-header">
+                        <span class="feature-icon">🔍</span>
+                        <span class="feature-tag">AI Screener</span>
+                    </div>
+                    <h3>Smart Stock Screener</h3>
+                    <p>Natural language queries powered by ML. Ask "Show me breakout stocks" and get instant results with AI confidence scores.</p>
+                    <div class="feature-highlights">
+                        <span>✓ NLP Powered</span>
+                        <span>✓ 50+ Filters</span>
+                        <span>✓ Instant Results</span>
+                    </div>
+                    <a href="screener.html" class="feature-link">Explore →</a>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="feature-card">
+                    <div class="feature-header">
+                        <span class="feature-icon">💬</span>
+                        <span class="feature-tag">AI Chat</span>
+                    </div>
+                    <h3>Bigul AI Assistant</h3>
+                    <p>Chat with your personal AI trading coach. Get instant explanations, trade ideas, risk analysis, and behavioral coaching.</p>
+                    <div class="feature-highlights">
+                        <span>✓ 24/7 Available</span>
+                        <span>✓ Voice Input</span>
+                        <span>✓ Chart Rendering</span>
+                    </div>
+                    <a href="chatbot.html" class="feature-link">Chat Now →</a>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="feature-card">
+                    <div class="feature-header">
+                        <span class="feature-icon">📊</span>
+                        <span class="feature-tag">Real-Time</span>
+                    </div>
+                    <h3>Live Dashboard</h3>
+                    <p>Enterprise-grade dashboard with live market data, AI movers, sentiment analysis, and institutional flows.</p>
+                    <div class="feature-highlights">
+                        <span>✓ Live Data</span>
+                        <span>✓ Heat Maps</span>
+                        <span>✓ Smart Alerts</span>
+                    </div>
+                    <a href="dashboard.html" class="feature-link">View →</a>
+                </div>
+
+                <!-- Feature 4 -->
+                <div class="feature-card">
+                    <div class="feature-header">
+                        <span class="feature-icon">💼</span>
+                        <span class="feature-tag">Risk Management</span>
+                    </div>
+                    <h3>Portfolio Doctor</h3>
+                    <p>Advanced portfolio analysis with risk scoring, correlation matrix, drawdown modeling, and AI optimization suggestions.</p>
+                    <div class="feature-highlights">
+                        <span>✓ Risk Scoring</span>
+                        <span>✓ Correlation</span>
+                        <span>✓ Optimization</span>
+                    </div>
+                    <a href="portfolio.html" class="feature-link">Analyze →</a>
+                </div>
+
+                <!-- Feature 5 -->
+                <div class="feature-card">
+                    <div class="feature-header">
+                        <span class="feature-icon">⏱️</span>
+                        <span class="feature-tag">Learning</span>
+                    </div>
+                    <h3>Trade Replay</h3>
+                    <p>Step-by-step analysis of your past trades with AI feedback. Learn from winners and improve entry/exit timing.</p>
+                    <div class="feature-highlights">
+                        <span>✓ AI Feedback</span>
+                        <span>✓ Performance Review</span>
+                        <span>✓ Behavioral Insights</span>
+                    </div>
+                    <a href="trade-replay.html" class="feature-link">Replay →</a>
+                </div>
+
+                <!-- Feature 6 -->
+                <div class="feature-card">
+                    <div class="feature-header">
+                        <span class="feature-icon">🎯</span>
+                        <span class="feature-tag">Strategies</span>
+                    </div>
+                    <h3>Strategy Builder</h3>
+                    <p>Drag-and-drop strategy creation without coding. Backtest with 10Y data and deploy with AI optimization.</p>
+                    <div class="feature-highlights">
+                        <span>✓ No Coding</span>
+                        <span>✓ Backtesting</span>
+                        <span>✓ Live Deploy</span>
+                    </div>
+                    <a href="strategy.html" class="feature-link">Build →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Educational Section -->
+    <section class="educational-section">
+        <div class="container">
+            <h2 class="section-title">Learn AI Trading 101</h2>
+            <div class="edu-grid">
+                <div class="edu-card">
+                    <div class="edu-number">1</div>
+                    <h4>Understand Market Basics</h4>
+                    <p>Learn how indices work, what drives stock prices, and why AI is revolutionizing trading decisions.</p>
+                    <button class="btn btn-sm btn-outline" onclick="showEducation('basics')">Read More</button>
+                </div>
+
+                <div class="edu-card">
+                    <div class="edu-number">2</div>
+                    <h4>Master Technical Analysis</h4>
+                    <p>RSI, MACD, Moving Averages explained. See how AI detects patterns you'd miss manually.</p>
+                    <button class="btn btn-sm btn-outline" onclick="showEducation('technical')">Read More</button>
+                </div>
+
+                <div class="edu-card">
+                    <div class="edu-number">3</div>
+                    <h4>Risk Management Rules</h4>
+                    <p>Position sizing, stop losses, portfolio diversification. How AI prevents catastrophic losses.</p>
+                    <button class="btn btn-sm btn-outline" onclick="showEducation('risk')">Read More</button>
+                </div>
+
+                <div class="edu-card">
+                    <div class="edu-number">4</div>
+                    <h4>AI-Powered Trading</h4>
+                    <p>How machine learning identifies opportunities, predicts sentiment, and automates decisions.</p>
+                    <button class="btn btn-sm btn-outline" onclick="showEducation('ai')">Read More</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Proof Section -->
+    <section class="social-proof">
+        <div class="container">
+            <h2 class="section-title">Trusted by Thousands</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial">
+                    <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+                    <p class="testimonial-text">"Bigul AI helped me beat NIFTY by 6.5% this year. The screener is a game-changer!"</p>
+                    <p class="testimonial-author">— Rajesh K., Portfolio Manager</p>
+                </div>
+
+                <div class="testimonial">
+                    <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+                    <p class="testimonial-text">"The AI chat assistant saved me 40+ hours this quarter. Best investment ever."</p>
+                    <p class="testimonial-author">— Priya S., Day Trader</p>
+                </div>
+
+                <div class="testimonial">
+                    <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+                    <p class="testimonial-text">"Portfolio Doctor caught my concentration risk before it became a problem. Highly recommended!"</p>
+                    <p class="testimonial-author">— Amit M., Investor</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Ready to Revolutionize Your Trading?</h2>
+                <p>Join thousands of traders using AI to make smarter decisions faster.</p>
+                <a href="dashboard.html" class="btn btn-primary btn-lg">
+                    Start Trading with AI
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Bigul AI</h4>
+                    <p>Revolutionary AI-powered trading platform for the modern investor.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="dashboard.html">Dashboard</a></li>
+                        <li><a href="screener.html">Screener</a></li>
+                        <li><a href="chatbot.html">AI Chat</a></li>
+                        <li><a href="settings.html">Settings</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#privacy">Privacy Policy</a></li>
+                        <li><a href="#terms">Terms of Service</a></li>
+                        <li><a href="#disclaimer">Disclaimer</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>Bigul AI Trading Suite|Prototype for implementing AI in trading (to be added here)</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Education Modal -->
+    <div id="educationModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeEducation()">&times;</span>
+            <div id="educationBody"></div>
+        </div>
+    </div>
+
+    <script src="js/global.js"></script>
+    <script>
+        function scrollToFeatures() {
+            document.getElementById('features').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function showEducation(topic) {
+            const modal = document.getElementById('educationModal');
+            const educationContent = {
+                basics: `
+                    <h2>Understanding Market Basics 📚</h2>
+                    <p><strong>What are indices?</strong></p>
+                    <p>Indices like NIFTY 50 are baskets of stocks. When most stocks go up, the index goes up.</p>
+                    <p><strong>Why use AI?</strong></p>
+                    <p>AI can process millions of data points instantly to spot patterns humans miss.</p>
+                    <p><strong>Key Takeaway:</strong> AI doesn't replace your judgment—it amplifies your decision-making power.</p>
+                `,
+                technical: `
+                    <h2>Technical Analysis with AI 📊</h2>
+                    <p><strong>RSI (Relative Strength Index)</strong></p>
+                    <p>Shows if a stock is overbought (>70) or oversold (<30). AI uses this to time entries.</p>
+                    <p><strong>MACD (Moving Average Convergence Divergence)</strong></p>
+                    <p>Detects momentum shifts. When MACD crosses above signal line, it's often bullish.</p>
+                    <p><strong>AI Edge:</strong> Processes these indicators on 500+ stocks simultaneously. You see only the best opportunities.</p>
+                `,
+                risk: `
+                    <h2>Risk Management Rules ⚖️</h2>
+                    <p><strong>Position Sizing:</strong> Never risk more than 2% of portfolio on one trade.</p>
+                    <p><strong>Stop Losses:</strong> Always set them. AI helps you find optimal levels.</p>
+                    <p><strong>Diversification:</strong> 30% concentration in one sector is dangerous. AI alerts you.</p>
+                    <p><strong>Portfolio Doctor Feature:</strong> Analyzes your holdings and suggests rebalancing.</p>
+                `,
+                ai: `
+                    <h2>How AI Trades Smarter 🤖</h2>
+                    <p><strong>Pattern Recognition:</strong> AI identifies Golden Crosses, breakouts, support/resistance levels in milliseconds.</p>
+                    <p><strong>Sentiment Analysis:</strong> Reads news to gauge market mood. Positive news → higher probability of upward move.</p>
+                    <p><strong>Predictive Modeling:</strong> Based on 10 years of data, predicts next 30 days' movement probability.</p>
+                    <p><strong>Your Edge:</strong> You get institutional-grade insights at retail price.</p>
+                `
+            };
+            document.getElementById('educationBody').innerHTML = educationContent[topic] || '<p>Content not found</p>';
+            modal.style.display = 'block';
+        }
+
+        function closeEducation() {
+            document.getElementById('educationModal').style.display = 'none';
+        }
+
+        // Animation on scroll
+        gsap.registerEffect({
+            name: "fadeInUp",
+            effect: (targets) => {
+                return gsap.to(targets, {
+                    duration: 0.8,
+                    opacity: 1,
+                    y: 0,
+                    stagger: 0.1
+                });
+            },
+            defaults: { duration: 0.8 }
+        });
+
+        // Animate features on page load
+        window.addEventListener('load', () => {
+            gsap.effects.fadeInUp('.feature-card', { y: 30, opacity: 0 });
+        });
+    </script>
+</body>
+</html>

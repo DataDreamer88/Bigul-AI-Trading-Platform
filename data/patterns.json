@@ -1,0 +1,60 @@
+{
+  "patterns": [
+    {
+      "symbol": "RELIANCE",
+      "pattern": "Golden Cross",
+      "confidence": 92.5,
+      "signal": "bullish",
+      "description": "50-day MA crossed above 200-day MA",
+      "detectDate": "2024-01-01"
+    },
+    {
+      "symbol": "HDFC",
+      "pattern": "Breakout",
+      "confidence": 88.3,
+      "signal": "bullish",
+      "description": "Price broke above resistance at 2650",
+      "detectDate": "2024-01-01"
+    },
+    {
+      "symbol": "TCS",
+      "pattern": "Consolidation",
+      "confidence": 75.2,
+      "signal": "neutral",
+      "description": "Trading within ±2% range for 5 days",
+      "detectDate": "2024-01-01"
+    },
+    {
+      "symbol": "INFY",
+      "pattern": "Uptrend",
+      "confidence": 81.7,
+      "signal": "bullish",
+      "description": "Making higher highs and higher lows",
+      "detectDate": "2024-01-01"
+    },
+    {
+      "symbol": "ASIANPAINT",
+      "pattern": "52W High",
+      "confidence": 100,
+      "signal": "bullish",
+      "description": "Stock at 52-week high of ₹3,650",
+      "detectDate": "2024-01-01"
+    },
+    {
+      "symbol": "WIPRO",
+      "pattern": "Downtrend",
+      "confidence": 86.4,
+      "signal": "bearish",
+      "description": "Making lower highs and lower lows",
+      "detectDate": "2024-01-01"
+    },
+    {
+      "symbol": "SBIN",
+      "pattern": "Double Bottom",
+      "confidence": 79.8,
+      "signal": "bullish",
+      "description": "Two similar lows around 800 level",
+      "detectDate": "2024-01-01"
+    }
+  ]
+}

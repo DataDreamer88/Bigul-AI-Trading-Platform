@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Market Dashboard | Bigul AI Trading</title>
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/components.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.min.js"></script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <span class="logo-icon">🚀</span>
+                <span class="logo-text">Bigul<span class="logo-ai">AI</span></span>
+            </div>
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="dashboard.html" class="nav-link active">Dashboard</a>
+                <a href="screener.html" class="nav-link">Screener</a>
+                <a href="chatbot.html" class="nav-link">AI Chat</a>
+                <a href="settings.html" class="nav-link">Settings</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container" style="padding-top: 2rem; padding-bottom: 2rem;">
+        <!-- Dashboard Header -->
+        <div style="margin-bottom: 2rem;">
+            <h1>📊 Live Market Dashboard</h1>
+            <p style="color: var(--text-secondary);">Real-time data powered by AI. Last updated: <span id="lastUpdated">Now</span></p>
+        </div>
+
+        <!-- AI Insight Card -->
+        <div class="card" style="margin-bottom: 2rem; background: linear-gradient(135deg, #e6f0ff 0%, #f0f9ff 100%); border-left: 4px solid var(--primary);">
+            <h3 style="color: var(--primary); margin-bottom: 0.5rem;">🤖 AI Market Insight</h3>
+            <p id="aiInsight">Market showing strong bullish momentum. IT sector leading with +3.2% gain. Banks consolidating. Watch for breakout in Smallcap index.</p>
+        </div>
+
+        <!-- Market Indices -->
+        <h2 style="margin-bottom: 1.5rem; margin-top: 2rem;">Live Indices</h2>
+        <div class="stats-grid" id="indicesContainer" style="margin-bottom: 3rem;">
+            <!-- Populated by JS -->
+        </div>
+
+        <!-- Market Movers -->
+        <div class="grid grid-2" style="margin-bottom: 3rem;">
+            <!-- Top Gainers -->
+            <div>
+                <h2 style="margin-bottom: 1.5rem;">📈 Top Gainers</h2>
+                <div id="gainer sContainer">
+                    <!-- Populated by JS -->
+                </div>
+            </div>
+
+            <!-- Top Losers -->
+            <div>
+                <h2 style="margin-bottom: 1.5rem;">📉 Top Losers</h2>
+                <div id="losersContainer">
+                    <!-- Populated by JS -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Charts Section -->
+        <div class="grid grid-2" style="margin-bottom: 3rem;">
+            <div class="card">
+                <h3 style="margin-bottom: 1rem;">NIFTY 50 - 5 Day Trend</h3>
+                <div style="height: 300px;">
+                    <canvas id="niftyChart"></canvas>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3 style="margin-bottom: 1rem;">Sector Performance</h3>
+                <div style="height: 300px;">
+                    <canvas id="sectorChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- Stock List -->
+        <h2 style="margin-bottom: 1.5rem;">All Stocks</h2>
+        <div class="card" style="overflow-x: auto;">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Symbol</th>
+                        <th>Price</th>
+                        <th>Change</th>
+                        <th>PE Ratio</th>
+                        <th>ROE</th>
+                        <th>RSI</th>
+                        <th>Sentiment</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="stocksTableBody">
+                    <!-- Populated by JS -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer" style="margin-top: 4rem;">
+        <div class="container">
+            <p>&copy; 2024 Bigul AI Trading Suite. Real-time market data and AI insights.</p>
+        </div>
+    </footer>
+
+    <script src="js/global.js"></script>
+    <script>
+        // Initialize Dashboard
+        document.addEventListener('DOMContentLoaded', () => {
+            renderIndices();
+            renderMarketMovers();
+            renderStocksTable();
+            createCharts();
+        });
+
+        function renderIndices() {
+            // Mock indices
+            const indices = [
+                { name: 'NIFTY 50', value: 21450, change: 2.5 },
+                { name: 'BANKNIFTY', value: 52800, change: 1.8 },
+                { name: 'SENSEX', value: 71250, change: -0.5 },
+                { name: 'IT Index', value: 18950, change: 3.2 }
+            ];
+
+            const html = indices.map(idx => `
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <span class="stat-icon">📊</span>
+                        <span class="stat-status ${idx.change > 0 ? 'positive' : 'negative'}">
+                            ${idx.change > 0 ? '↑' : '↓'} ${Math.abs(idx.change).toFixed(2)}%
+                        </span>
+                    </div>
+                    <p class="stat-name">${idx.name}</p>
+                    <p class="stat-value">${idx.value.toLocaleString()}</p>
+                </div>
+            `).join('');
+
+            document.getElementById('indicesContainer').innerHTML = html;
+        }
+
+        function renderMarketMovers() {
+            if (!appState.stocksData.length) return;
+            
+            const sorted = [...appState.stocksData].sort((a, b) => b.change - a.change);
+            const gainers = sorted.slice(0, 5);
+            const losers = sorted.slice(-5).reverse();
+
+            const gainerHtml = gainers.map(stock => `
+                <div class="card" style="margin-bottom: 1rem;">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <div>
+                            <strong>${stock.symbol}</strong>
+                            <p style="font-size: 0.9rem; color: var(--text-secondary);">${stock.name}</p>
+                        </div>
+                        <div style="text-align: right;">
+                            <p style="font-weight: 700; color: var(--success);">₹${stock.price}</p>
+                            <p style="color: var(--success);">↑ ${stock.change.toFixed(2)}%</p>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+
+            const loserHtml = losers.map(stock => `
+                <div class="card" style="margin-bottom: 1rem;">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <div>
+                            <strong>${stock.symbol}</strong>
+                            <p style="font-size: 0.9rem; color: var(--text-secondary);">${stock.name}</p>
+                        </div>
+                        <div style="text-align: right;">
+                            <p style="font-weight: 700; color: var(--danger);">₹${stock.price}</p>
+                            <p style="color: var(--danger);">↓ ${Math.abs(stock.change).toFixed(2)}%</p>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+
+            document.getElementById('gainersContainer').innerHTML = gainerHtml;
+            document.getElementById('losersContainer').innerHTML = loserHtml;
+        }
+
+        function renderStocksTable() {
+            if (!appState.stocksData.length) return;
+
+            const html = appState.stocksData.map(stock => `
+                <tr onclick="window.location.href='stock.html?symbol=${stock.symbol}';" style="cursor: pointer;">
+                    <td><strong>${stock.symbol}</strong></td>
+                    <td>₹${stock.price}</td>
+                    <td style="color: ${stock.change > 0 ? 'var(--success)' : 'var(--danger)'};">
+                        ${stock.change > 0 ? '↑' : '↓'} ${Math.abs(stock.change).toFixed(2)}%
+                    </td>
+                    <td>${stock.pe.toFixed(1)}x</td>
+                    <td>${stock.roe.toFixed(1)}%</td>
+                    <td>${stock.rsi}</td>
+                    <td>
+                        <span class="badge ${stock.sentiment.includes('bullish') ? 'badge-success' : stock.sentiment.includes('bearish') ? 'badge-danger' : ''}">
+                            ${stock.sentiment}
+                        </span>
+                    </td>
+                    <td>
+                        <button class="btn btn-sm btn-outline" onclick="addToWatchlist('${stock.symbol}'); event.stopPropagation();">
+                            ⭐ Watch
+                        </button>
+                    </td>
+                </tr>
+            `).join('');
+
+            document.getElementById('stocksTableBody').innerHTML = html;
+        }
+
+        function createCharts() {
+            // NIFTY Chart
+            createChart('niftyChart', 'line', 
+                ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'],
+                [{
+                    label: 'NIFTY 50',
+                    data: [21100, 21250, 21300, 21400, 21450],
+                    borderColor: 'var(--primary)',
+                    backgroundColor: 'rgba(0, 102, 255, 0.1)',
+                    fill: true,
+                    tension: 0.4
+                }]
+            );
+
+            // Sector Chart
+            createChart('sectorChart', 'bar',
+                ['Energy', 'Banking', 'IT', 'Pharma', 'Auto'],
+                [{
+                    label: 'Sector Return %',
+                    data: [4.2, 2.1, 3.2, 1.5, 2.8],
+                    backgroundColor: ['#0066ff', '#10b981', '#f59e0b', '#ef4444', '#00d4ff']
+                }]
+            );
+        }
+
+        // Update time every minute
+        setInterval(() => {
+            document.getElementById('lastUpdated').textContent = new Date().toLocaleTimeString();
+        }, 60000);
+    </script>
+</body>
+</html>

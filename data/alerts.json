@@ -1,0 +1,54 @@
+{
+  "alerts": [
+    {
+      "id": 1,
+      "symbol": "RELIANCE",
+      "type": "price",
+      "condition": "above",
+      "value": 2900,
+      "active": true,
+      "createdDate": "2024-01-01",
+      "lastTriggered": null
+    },
+    {
+      "id": 2,
+      "symbol": "HDFC",
+      "type": "price",
+      "condition": "below",
+      "value": 2600,
+      "active": true,
+      "createdDate": "2024-01-01",
+      "lastTriggered": null
+    },
+    {
+      "id": 3,
+      "symbol": "INFY",
+      "type": "volume",
+      "condition": "above",
+      "value": 3,
+      "active": true,
+      "createdDate": "2024-01-01",
+      "lastTriggered": null
+    },
+    {
+      "id": 4,
+      "symbol": "ASIANPAINT",
+      "type": "price",
+      "condition": "above",
+      "value": 3700,
+      "active": false,
+      "createdDate": "2023-12-25",
+      "lastTriggered": "2024-01-01 14:30"
+    },
+    {
+      "id": 5,
+      "symbol": "TCS",
+      "type": "price",
+      "condition": "below",
+      "value": 4300,
+      "active": true,
+      "createdDate": "2024-01-01",
+      "lastTriggered": null
+    }
+  ]
+}

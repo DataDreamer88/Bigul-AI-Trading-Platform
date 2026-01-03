@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Strategy Builder | Bigul AI Trading</title>
+  <link rel="stylesheet" href="css/global.css" />
+  <link rel="stylesheet" href="css/components.css" />
+</head>
+<body>
+  <!-- Top Nav (same structure as other pages) -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="logo">
+        <span class="logo-icon">🚀</span>
+        <span class="logo-text">Bigul<span class="logo-ai">AI</span></span>
+      </div>
+      <div class="nav-menu">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="dashboard.html" class="nav-link">Dashboard</a>
+        <a href="screener.html" class="nav-link">Screener</a>
+        <a href="chatbot.html" class="nav-link">AI Chat</a>
+        <a href="strategy.html" class="nav-link active">Strategy</a>
+        <a href="settings.html" class="nav-link">Settings</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container" style="padding:2rem 0;">
+    <!-- Header -->
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:2rem;gap:1.5rem;">
+      <div>
+        <h1>🎯 Strategy Builder</h1>
+        <p style="color:var(--text-secondary);max-width:520px;">
+          Drag-and-drop strategy creation without coding. Backtest with 10Y data and deploy
+          with AI optimization. Use the educational hints on the right if you are new.
+        </p>
+      </div>
+      <div class="card" style="max-width:320px;">
+        <h4 style="margin-bottom:0.5rem;">📚 Quick Education</h4>
+        <p style="font-size:0.9rem;color:var(--text-secondary);margin-bottom:0.5rem;">
+          A <strong>strategy</strong> is a set of rules like: “Buy NIFTY when 20‑EMA
+          crosses above 50‑EMA and RSI &lt; 70”.
+        </p>
+        <ul style="padding-left:1.2rem;font-size:0.9rem;color:var(--text-secondary);margin:0;">
+          <li>Entry rules = when to open a trade</li>
+          <li>Exit rules = when to close a trade</li>
+          <li>Risk rules = how much capital per trade</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Builder + Preview -->
+    <div class="grid grid-3" style="grid-template-columns:260px 1fr 260px;gap:1.5rem;">
+      <!-- Block palette -->
+      <div class="card">
+        <h3 style="margin-bottom:1rem;">🧩 Blocks</h3>
+        <p style="font-size:0.85rem;color:var(--text-secondary);margin-bottom:0.75rem;">
+          Drag these building blocks into the canvas to design your strategy.
+        </p>
+        <div id="blockPalette" style="display:flex;flex-direction:column;gap:0.5rem;">
+          <div class="draggable-block" draggable="true" data-type="entry"
+               style="padding:0.6rem 0.7rem;border-radius:8px;border:1px dashed var(--border);cursor:grab;">
+            ➕ Entry: Indicator Condition
+          </div>
+          <div class="draggable-block" draggable="true" data-type="exit"
+               style="padding:0.6rem 0.7rem;border-radius:8px;border:1px dashed var(--border);cursor:grab;">
+            ➖ Exit: Take Profit / Stop Loss
+          </div>
+          <div class="draggable-block" draggable="true" data-type="risk"
+               style="padding:0.6rem 0.7rem;border-radius:8px;border:1px dashed var(--border);cursor:grab;">
+            ⚖️ Risk: Position Sizing
+          </div>
+          <div class="draggable-block" draggable="true" data-type="filter"
+               style="padding:0.6rem 0.7rem;border-radius:8px;border:1px dashed var(--border);cursor:grab;">
+            🔍 Market Filter (Trend)
+          </div>
+        </div>
+      </div>
+
+      <!-- Canvas -->
+      <div class="card" style="min-height:320px;">
+        <h3 style="margin-bottom:1rem;">🛠️ Strategy Canvas</h3>
+        <p style="font-size:0.85rem;color:var(--text-secondary);margin-bottom:0.75rem;">
+          Drop blocks here, then click each block to edit its parameters.
+        </p>
+        <div id="canvas"
+             style="min-height:220px;border:2px dashed var(--border);border-radius:10px;padding:0.75rem;display:flex;flex-direction:column;gap:0.75rem;">
+          <p id="canvasPlaceholder"
+             style="text-align:center;color:var(--text-secondary);margin:1.5rem 0;font-size:0.9rem;">
+            Drag a block here to start building your first strategy.
+          </p>
+        </div>
+        <div style="margin-top:1rem;display:flex;gap:0.75rem;justify-content:flex-end;">
+          <button class="btn btn-secondary" onclick="clearStrategy()">Reset</button>
+          <button class="btn btn-primary" onclick="openBacktest()">Backtest ▶</button>
+        </div>
+      </div>
+
+      <!-- Properties / Help -->
+      <div class="card" id="propertiesPanel">
+        <h3 style="margin-bottom:1rem;">⚙️ Block Settings</h3>
+        <p style="font-size:0.85rem;color:var(--text-secondary);margin-bottom:0.75rem;">
+          Click a block on the canvas to edit its details. Example:
+        </p>
+        <ul style="font-size:0.85rem;color:var(--text-secondary);padding-left:1.2rem;margin:0;">
+          <li>Indicator: 20 EMA crosses above 50 EMA</li>
+          <li>Exit: Stop loss 2%, target 5%</li>
+          <li>Risk: 2% of capital per trade</li>
+        </ul>
+        <div id="propertiesContent" style="margin-top:1rem;font-size:0.9rem;"></div>
+      </div>
+    </div>
+
+    <!-- Backtest summary -->
+    <div class="card" id="backtestCard" style="margin-top:2rem;display:none;">
+      <h3 style="margin-bottom:1rem;">📈 Backtest Summary (Sample)</h3>
+      <p style="font-size:0.9rem;color:var(--text-secondary);margin-bottom:0.75rem;">
+        This is a simulated example to help you understand how backtesting output will look.
+      </p>
+      <div class="grid grid-4">
+        <div>
+          <p style="font-size:0.85rem;color:var(--text-secondary);margin:0;">CAGR</p>
+          <p style="margin:0;font-weight:700;">18.4%</p>
+        </div>
+        <div>
+          <p style="font-size:0.85rem;color:var(--text-secondary);margin:0;">Max Drawdown</p>
+          <p style="margin:0;font-weight:700;">-9.6%</p>
+        </div>
+        <div>
+          <p style="font-size:0.85rem;color:var(--text-secondary);margin:0;">Win Rate</p>
+          <p style="margin:0;font-weight:700;">56%</p>
+        </div>
+        <div>
+          <p style="font-size:0.85rem;color:var(--text-secondary);margin:0;">Trades</p>
+          <p style="margin:0;font-weight:700;">124</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <p>© 2024 Bigul AI Trading Suite. Build, backtest & deploy strategies without coding.</p>
+    </div>
+  </footer>
+
+  <script src="js/global.js"></script>
+  <script>
+    const canvas = document.getElementById('canvas');
+    const placeholder = document.getElementById('canvasPlaceholder');
+    const propertiesContent = document.getElementById('propertiesContent');
+    const backtestCard = document.getElementById('backtestCard');
+
+    let blocks = [];
+    let activeBlockId = null;
+    let idCounter = 1;
+
+    document.querySelectorAll('.draggable-block').forEach(el => {
+      el.addEventListener('dragstart', e => {
+        e.dataTransfer.setData('block-type', el.dataset.type);
+      });
+    });
+
+    canvas.addEventListener('dragover', e => e.preventDefault());
+    canvas.addEventListener('drop', e => {
+      e.preventDefault();
+      const type = e.dataTransfer.getData('block-type');
+      if (!type) return;
+      addBlock(type);
+    });
+
+    function addBlock(type) {
+      if (placeholder) placeholder.style.display = 'none';
+      const id = 'blk_' + idCounter++;
+      const el = document.createElement('div');
+      el.className = 'card';
+      el.style.padding = '0.6rem 0.75rem';
+      el.style.cursor = 'pointer';
+      el.dataset.id = id;
+      el.dataset.type = type;
+      el.onclick = () => selectBlock(id);
+
+      const title = {
+        entry: 'Entry Condition',
+        exit: 'Exit Rule',
+        risk: 'Risk Management',
+        filter: 'Market Filter'
+      }[type] || 'Block';
+
+      el.innerHTML =
+        '<strong>' + title + '</strong>' +
+        '<p style="margin:0.25rem 0 0;font-size:0.8rem;color:var(--text-secondary);">Click to edit parameters.</p>';
+
+      canvas.appendChild(el);
+      blocks.push({ id, type, params: {} });
+      selectBlock(id);
+    }
+
+    function selectBlock(id) {
+      activeBlockId = id;
+      canvas.querySelectorAll('.card').forEach(c => {
+        c.style.borderColor = 'var(--border)';
+      });
+      const activeEl = [...canvas.querySelectorAll('.card')].find(c => c.dataset.id === id);
+      if (activeEl) activeEl.style.borderColor = 'var(--primary)';
+
+      const blk = blocks.find(b => b.id === id);
+      if (!blk) return;
+      renderProperties(blk);
+    }
+
+    function renderProperties(blk) {
+      if (blk.type === 'entry') {
+        propertiesContent.innerHTML = `
+          <label style="font-size:0.85rem;">Indicator</label>
+          <select onchange="updateParam('indicator', this.value)" style="width:100%;margin-bottom:0.5rem;">
+            <option>EMA Crossover</option>
+            <option>RSI</option>
+            <option>MACD</option>
+          </select>
+          <label style="font-size:0.85rem;">Condition</label>
+          <input type="text" value="${blk.params.condition || '20 EMA crosses above 50 EMA'}"
+                 onchange="updateParam('condition', this.value)"
+                 style="width:100%;margin-bottom:0.5rem;" />
+        `;
+      } else if (blk.type === 'exit') {
+        propertiesContent.innerHTML = `
+          <label style="font-size:0.85rem;">Take Profit (%)</label>
+          <input type="number" value="${blk.params.tp || 5}"
+                 onchange="updateParam('tp', this.value)"
+                 style="width:100%;margin-bottom:0.5rem;" />
+          <label style="font-size:0.85rem;">Stop Loss (%)</label>
+          <input type="number" value="${blk.params.sl || 2}"
+                 onchange="updateParam('sl', this.value)"
+                 style="width:100%;" />
+        `;
+      } else if (blk.type === 'risk') {
+        propertiesContent.innerHTML = `
+          <label style="font-size:0.85rem;">Risk per Trade (% of capital)</label>
+          <input type="number" value="${blk.params.risk || 2}"
+                 onchange="updateParam('risk', this.value)"
+                 style="width:100%;" />
+        `;
+      } else if (blk.type === 'filter') {
+        propertiesContent.innerHTML = `
+          <label style="font-size:0.85rem;">Market Filter</label>
+          <select onchange="updateParam('filter', this.value)" style="width:100%;">
+            <option>Trade only when NIFTY above 200 EMA</option>
+            <option>Avoid results days</option>
+            <option>Trade only in bullish trend</option>
+          </select>
+        `;
+      } else {
+        propertiesContent.innerHTML = '<p style="font-size:0.85rem;">Select a block to edit settings.</p>';
+      }
+    }
+
+    function updateParam(key, value) {
+      const blk = blocks.find(b => b.id === activeBlockId);
+      if (!blk) return;
+      blk.params[key] = value;
+    }
+
+    function clearStrategy() {
+      blocks = [];
+      activeBlockId = null;
+      canvas.innerHTML = '';
+      canvas.appendChild(placeholder);
+      placeholder.style.display = 'block';
+      propertiesContent.innerHTML = '';
+      backtestCard.style.display = 'none';
+    }
+
+    function openBacktest() {
+      if (!blocks.length) {
+        alert('Add at least one block before backtesting.');
+        return;
+      }
+      backtestCard.style.display = 'block';
+      showNotification('Backtest simulated. Connect real engine to use live 10Y data.');
+    }
+  </script>
+</body>
+</html>

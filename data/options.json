@@ -1,0 +1,53 @@
+{
+  "options": {
+    "nifty": [
+      {
+        "strikePrice": 21000,
+        "callOI": 50000,
+        "callPrice": 850,
+        "putOI": 60000,
+        "putPrice": 250,
+        "pcr": 1.2,
+        "sentiment": "bullish"
+      },
+      {
+        "strikePrice": 21100,
+        "callOI": 45000,
+        "callPrice": 750,
+        "putOI": 55000,
+        "putPrice": 350,
+        "pcr": 1.22,
+        "sentiment": "bullish"
+      },
+      {
+        "strikePrice": 21200,
+        "callOI": 40000,
+        "callPrice": 650,
+        "putOI": 50000,
+        "putPrice": 450,
+        "pcr": 1.25,
+        "sentiment": "bullish"
+      }
+    ],
+    "banknifty": [
+      {
+        "strikePrice": 51000,
+        "callOI": 85000,
+        "callPrice": 420,
+        "putOI": 95000,
+        "putPrice": 180,
+        "pcr": 1.12,
+        "sentiment": "neutral"
+      },
+      {
+        "strikePrice": 51500,
+        "callOI": 80000,
+        "callPrice": 220,
+        "putOI": 90000,
+        "putPrice": 380,
+        "pcr": 1.13,
+        "sentiment": "neutral"
+      }
+    ]
+  }
+}

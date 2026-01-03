@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trade Replay | Bigul AI Trading</title>
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/components.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.min.js"></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo"><span class="logo-icon">🚀</span><span class="logo-text">Bigul<span class="logo-ai">AI</span></span></div>
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="dashboard.html" class="nav-link">Dashboard</a>
+                <a href="screener.html" class="nav-link">Screener</a>
+                <a href="chatbot.html" class="nav-link">AI Chat</a>
+                <a href="settings.html" class="nav-link">Settings</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container" style="padding: 2rem 0;">
+        <h1>⏱️ Trade Replay - Learn from Your Trades</h1>
+        <p style="color: var(--text-secondary); margin-bottom: 2rem;">Review past trades step-by-step with AI feedback.</p>
+
+        <div class="card" style="margin-bottom: 2rem;">
+            <h3 style="margin-bottom: 1.5rem;">📹 Playback Controls</h3>
+            <div style="display: flex; gap: 1rem; align-items: center; margin-bottom: 2rem; flex-wrap: wrap;">
+                <button class="btn btn-primary" onclick="playReplay()">▶ Play</button>
+                <button class="btn btn-secondary" onclick="pauseReplay()">⏸ Pause</button>
+                <button class="btn btn-secondary" onclick="resetReplay()">↻ Reset</button>
+                <select id="speedControl" style="padding: 0.5rem; border: 1px solid var(--border); border-radius: 6px;">
+                    <option value="0.5">0.5x Speed</option>
+                    <option value="1" selected>1x Speed</option>
+                    <option value="2">2x Speed</option>
+                </select>
+                <div style="flex: 1; min-width: 200px;">
+                    <input type="range" id="timelineSlider" min="0" max="100" value="0" style="width: 100%; cursor: pointer;">
+                    <p style="margin: 0; font-size: 0.85rem; color: var(--text-secondary);">Progress: <span id="progress">0</span>%</p>
+                </div>
+            </div>
+
+            <div style="background: #f8fafc; padding: 1.5rem; border-radius: 8px; margin-bottom: 1rem;">
+                <canvas id="replayChart" style="height: 250px;"></canvas>
+            </div>
+
+            <h4>📊 Trade Snapshot</h4>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+                <div>
+                    <p style="margin: 0; font-size: 0.9rem; color: var(--text-secondary);">Stock</p>
+                    <p style="margin: 0; font-weight: 700; font-size: 1.2rem;">RELIANCE</p>
+                </div>
+                <div>
+                    <p style="margin: 0; font-size: 0.9rem; color: var(--text-secondary);">Entry Price</p>
+                    <p style="margin: 0; font-weight: 700; font-size: 1.2rem;">₹2,750</p>
+                </div>
+                <div>
+                    <p style="margin: 0; font-size: 0.9rem; color: var(--text-secondary);">Exit Price</p>
+                    <p style="margin: 0; font-weight: 700; font-size: 1.2rem; color: var(--success);">₹2,850</p>
+                </div>
+                <div>
+                    <p style="margin: 0; font-size: 0.9rem; color: var(--text-secondary);">Profit</p>
+                    <p style="margin: 0; font-weight: 700; font-size: 1.2rem; color: var(--success);">+₹1,000 (+3.6%)</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid grid-2" style="margin-bottom: 2rem;">
+            <div class="card">
+                <h3 style="margin-bottom: 1rem;">🤖 AI Feedback</h3>
+                <div style="border-left: 4px solid var(--primary); padding-left: 1rem;">
+                    <p><strong>✅ Good Decision:</strong> Entered at support level.</p>
+                    <p><strong>✅ Good Exit:</strong> Exited at resistance near 2,850.</p>
+                    <p><strong>⚠️ Could Improve:</strong> Hold 15 mins more for +5% gain.</p>
+                    <p><strong>💡 Lesson:</strong> Let winners run, don't exit too early.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3 style="margin-bottom: 1rem;">📈 Trade Statistics</h3>
+                <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+                    <div style="display: flex; justify-content: space-between;">
+                        <span>Risk/Reward Ratio:</span>
+                        <strong>1:2.5 ✅</strong>
+                    </div>
+                    <div style="display: flex; justify-content: space-between;">
+                        <span>Hold Duration:</span>
+                        <strong>45 minutes</strong>
+                    </div>
+                    <div style="display: flex; justify-content: space-between;">
+                        <span>Max Drawdown:</span>
+                        <strong>-₹250 (-0.9%)</strong>
+                    </div>
+                    <div style="display: flex; justify-content: space-between;">
+                        <span>Score:</span>
+                        <strong style="color: var(--success);">85/100</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3 style="margin-bottom: 1rem;">📝 Trade Notebook</h3>
+            <textarea style="width: 100%; height: 150px; padding: 1rem; border: 1px solid var(--border); border-radius: 8px; font-family: monospace;" placeholder="Add your notes about this trade...">Entry: Support at 2,750
+Exit: Resistance at 2,850
+Pattern: Double bottom followed by breakout
+Lesson: Patience paid off!</textarea>
+        </div>
+    </div>
+
+    <footer class="footer"><div class="container"><p>&copy; 2024 Bigul AI Trading Suite. Learn from every trade.</p></div></footer>
+
+    <script src="js/global.js"></script>
+    <script>
+        let isPlaying = false;
+        let progress = 0;
+
+        document.addEventListener('DOMContentLoaded', () => {
+            createChart('replayChart', 'line',
+                ['10:00', '10:15', '10:30', '10:45', '11:00', '11:15'],
+                [{
+                    label: 'RELIANCE',
+                    data: [2750, 2760, 2780, 2810, 2835, 2850],
+                    borderColor: 'var(--primary)',
+                    backgroundColor: 'rgba(0, 102, 255, 0.1)',
+                    fill: true,
+                    tension: 0.4
+                }]
+            );
+        });
+
+        function playReplay() {
+            isPlaying = true;
+            const interval = setInterval(() => {
+                if (!isPlaying) {
+                    clearInterval(interval);
+                    return;
+                }
+                progress += 2;
+                if (progress > 100) progress = 100;
+                document.getElementById('progress').textContent = progress;
+                document.getElementById('timelineSlider').value = progress;
+            }, 300);
+        }
+
+        function pauseReplay() { isPlaying = false; }
+        function resetReplay() { progress = 0; document.getElementById('progress').textContent = '0'; document.getElementById('timelineSlider').value = 0; isPlaying = false; }
+    </script>
+</body>
+</html>

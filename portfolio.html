@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Doctor | Bigul AI Trading</title>
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/components.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.min.js"></script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <span class="logo-icon">🚀</span>
+                <span class="logo-text">Bigul<span class="logo-ai">AI</span></span>
+            </div>
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="dashboard.html" class="nav-link">Dashboard</a>
+                <a href="screener.html" class="nav-link">Screener</a>
+                <a href="chatbot.html" class="nav-link">AI Chat</a>
+                <a href="settings.html" class="nav-link">Settings</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container" style="padding: 2rem 0;">
+        <h1>💼 Portfolio Doctor - AI Analysis</h1>
+        <p style="color: var(--text-secondary); margin-bottom: 2rem;">Get AI-powered portfolio optimization and risk analysis.</p>
+
+        <!-- Portfolio Overview -->
+        <div class="grid grid-4" style="margin-bottom: 2rem;">
+            <div class="card" style="background: linear-gradient(135deg, #e6f0ff 0%, #f0f9ff 100%); border-left: 4px solid var(--primary);">
+                <p style="color: var(--text-secondary); font-size: 0.9rem; margin: 0 0 0.5rem 0;">Portfolio Value</p>
+                <p style="font-size: 2rem; font-weight: 800; margin: 0; color: var(--primary);">₹5.8L</p>
+            </div>
+            <div class="card" style="background: linear-gradient(135deg, #dcfce7 0%, #f0fdf4 100%); border-left: 4px solid var(--success);">
+                <p style="color: var(--text-secondary); font-size: 0.9rem; margin: 0 0 0.5rem 0;">Unrealized P&L</p>
+                <p style="font-size: 2rem; font-weight: 800; margin: 0; color: var(--success);">+₹48,200 (+8.2%)</p>
+            </div>
+            <div class="card" style="background: linear-gradient(135deg, #fef3c7 0%, #fefce8 100%); border-left: 4px solid #f59e0b;">
+                <p style="color: var(--text-secondary); font-size: 0.9rem; margin: 0 0 0.5rem 0;">Risk Score</p>
+                <p style="font-size: 2rem; font-weight: 800; margin: 0; color: #f59e0b;">9/10</p>
+            </div>
+            <div class="card" style="background: linear-gradient(135deg, #f3e8ff 0%, #faf5ff 100%); border-left: 4px solid #8b5cf6;">
+                <p style="color: var(--text-secondary); font-size: 0.9rem; margin: 0 0 0.5rem 0;">Diversification</p>
+                <p style="font-size: 2rem; font-weight: 800; margin: 0; color: #8b5cf6;">7.2/10</p>
+            </div>
+        </div>
+
+        <!-- AI Recommendations -->
+        <div class="card" style="margin-bottom: 2rem; background: linear-gradient(135deg, #e6f0ff 0%, #f0f9ff 100%); border-left: 4px solid var(--primary);">
+            <h3 style="color: var(--primary); margin-bottom: 1rem;">🤖 AI Recommendations</h3>
+            <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+                <p>✅ <strong>Reduce IT concentration:</strong> Your IT exposure is 35%, reduce to 25% for better diversification.</p>
+                <p>✅ <strong>Add Pharma/Healthcare:</strong> Currently 0%. Add 10-15% for stability in downturns.</p>
+                <p>⚠️ <strong>Monitor Banking sector:</strong> 28% exposure. RBI rates may impact returns.</p>
+                <p>💡 <strong>Consider Nifty Next 50:</strong> Diversify beyond Nifty 50 for better growth potential.</p>
+            </div>
+        </div>
+
+        <!-- Holdings -->
+        <h2 style="margin-bottom: 1.5rem;">📊 Your Holdings</h2>
+        <div class="card" style="margin-bottom: 2rem; overflow-x: auto;">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Stock</th>
+                        <th>Quantity</th>
+                        <th>Avg Price</th>
+                        <th>Current Price</th>
+                        <th>Investment</th>
+                        <th>Current Value</th>
+                        <th>P&L</th>
+                        <th>% Allocation</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>RELIANCE</strong></td>
+                        <td>10</td>
+                        <td>₹2,730</td>
+                        <td>₹2,850</td>
+                        <td>₹27,300</td>
+                        <td>₹28,500</td>
+                        <td style="color: var(--success);">+₹1,200 (+4.4%)</td>
+                        <td>24.1%</td>
+                    </tr>
+                    <tr>
+                        <td><strong>HDFC</strong></td>
+                        <td>8</td>
+                        <td>₹2,400</td>
+                        <td>₹2,680</td>
+                        <td>₹19,200</td>
+                        <td>₹21,440</td>
+                        <td style="color: var(--success);">+₹2,240 (+11.7%)</td>
+                        <td>18.2%</td>
+                    </tr>
+                    <tr>
+                        <td><strong>TCS</strong></td>
+                        <td>5</td>
+                        <td>₹4,100</td>
+                        <td>₹4,420</td>
+                        <td>₹20,500</td>
+                        <td>₹22,100</td>
+                        <td style="color: var(--success);">+₹1,600 (+7.8%)</td>
+                        <td>18.8%</td>
+                    </tr>
+                    <tr>
+                        <td><strong>INFY</strong></td>
+                        <td>15</td>
+                        <td>₹1,850</td>
+                        <td>₹2,020</td>
+                        <td>₹27,750</td>
+                        <td>₹30,300</td>
+                        <td style="color: var(--success);">+₹2,550 (+9.2%)</td>
+                        <td>25.7%</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ASIANPAINT</strong></td>
+                        <td>3</td>
+                        <td>₹3,200</td>
+                        <td>₹3,650</td>
+                        <td>₹9,600</td>
+                        <td>₹10,950</td>
+                        <td style="color: var(--success);">+₹1,350 (+14.1%)</td>
+                        <td>9.3%</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Charts -->
+        <div class="grid grid-2" style="margin-bottom: 2rem;">
+            <div class="card">
+                <h3 style="margin-bottom: 1rem;">🎯 Sector Allocation</h3>
+                <canvas id="sectorChart" style="height: 250px;"></canvas>
+            </div>
+
+            <div class="card">
+                <h3 style="margin-bottom: 1rem;">📈 Stock Allocation</h3>
+                <canvas id="stockChart" style="height: 250px;"></canvas>
+            </div>
+        </div>
+
+        <!-- Risk Analysis -->
+        <h2 style="margin-bottom: 1.5rem;">⚠️ Risk Analysis</h2>
+        <div class="grid grid-2" style="margin-bottom: 2rem;">
+            <div class="card">
+                <h4 style="margin-bottom: 1rem;">Volatility</h4>
+                <p style="font-size: 2rem; font-weight: 800; margin: 0 0 0.5rem 0; color: var(--success);">9.2%</p>
+                <p style="color: var(--text-secondary); font-size: 0.9rem; margin: 0;">Annual volatility. Low is better.</p>
+            </div>
+
+            <div class="card">
+                <h4 style="margin-bottom: 1rem;">Concentration Risk</h4>
+                <p style="font-size: 2rem; font-weight: 800; margin: 0 0 0.5rem 0; color: #f59e0b;">35% Top 3</p>
+                <p style="color: var(--text-secondary); font-size: 0.9rem; margin: 0;">Reduce to <25% for safety.</p>
+            </div>
+
+            <div class="card">
+                <h4 style="margin-bottom: 1rem;">Sharpe Ratio</h4>
+                <p style="font-size: 2rem; font-weight: 800; margin: 0 0 0.5rem 0; color: var(--success);">1.82</p>
+                <p style="color: var(--text-secondary); font-size: 0.9rem; margin: 0;">Risk-adjusted returns. >1.0 is good.</p>
+            </div>
+
+            <div class="card">
+                <h4 style="margin-bottom: 1rem;">Max Drawdown</h4>
+                <p style="font-size: 2rem; font-weight: 800; margin: 0 0 0.5rem 0; color: #f59e0b;">-8.5%</p>
+                <p style="color: var(--text-secondary); font-size: 0.9rem; margin: 0;">Worst peak-to-trough decline.</p>
+            </div>
+        </div>
+
+        <!-- Actions -->
+        <h2 style="margin-bottom: 1.5rem;">🎯 Recommended Actions</h2>
+        <div class="grid grid-2">
+            <div class="card" style="background: #dcfce7; border-left: 4px solid var(--success);">
+                <h4 style="margin-bottom: 0.5rem;">🟢 HOLD</h4>
+                <p style="margin: 0; font-size: 0.9rem;">RELIANCE, HDFC, TCS - Strong fundamentals. Continue holding.</p>
+            </div>
+
+            <div class="card" style="background: #fef3c7; border-left: 4px solid #f59e0b;">
+                <h4 style="margin-bottom: 0.5rem;">🟡 TRIM</h4>
+                <p style="margin: 0; font-size: 0.9rem;">INFY - Reduce from 25.7% to 18% allocation for better balance.</p>
+            </div>
+
+            <div class="card" style="background: #f3e8ff; border-left: 4px solid #8b5cf6;">
+                <h4 style="margin-bottom: 0.5rem;">🟣 BUY</h4>
+                <p style="margin: 0; font-size: 0.9rem;">Add PHARMA stocks for diversification. Target: 10-15% allocation.</p>
+            </div>
+
+            <div class="card" style="background: #dbeafe; border-left: 4px solid #3b82f6;">
+                <h4 style="margin-bottom: 0.5rem;">🔵 MONITOR</h4>
+                <p style="margin: 0; font-size: 0.9rem;">ASIANPAINT - Watch for correction before adding.</p>
+            </div>
+        </div>
+
+        <!-- Optimization Button -->
+        <div style="margin-top: 2rem; text-align: center;">
+            <button class="btn btn-primary btn-lg" onclick="optimizePortfolio()">
+                🚀 Get AI Optimization Plan
+            </button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Bigul AI Trading Suite. Optimize your portfolio with AI.</p>
+        </div>
+    </footer>
+
+    <script src="js/global.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Sector Chart
+            createChart('sectorChart', 'doughnut',
+                ['Banking', 'IT', 'Energy', 'Paints'],
+                [{
+                    label: 'Allocation %',
+                    data: [28, 35, 24.1, 12.9],
+                    backgroundColor: ['#3b82f6', '#10b981', '#0066ff', '#f59e0b']
+                }]
+            );
+
+            // Stock Chart
+            createChart('stockChart', 'doughnut',
+                ['INFY', 'RELIANCE', 'TCS', 'HDFC', 'ASIANPAINT'],
+                [{
+                    label: 'Allocation %',
+                    data: [25.7, 24.1, 18.8, 18.2, 9.3],
+                    backgroundColor: ['#10b981', '#0066ff', '#f59e0b', '#8b5cf6', '#06b6d4']
+                }]
+            );
+        });
+
+        function optimizePortfolio() {
+            alert('📊 AI Optimization Plan:\n\n' +
+                '1. REDUCE IT exposure from 35% to 25%\n' +
+                '2. INCREASE Pharma/Healthcare to 15%\n' +
+                '3. TRIM INFY position by 25%\n' +
+                '4. HOLD RELIANCE & HDFC\n' +
+                '5. ADD fundamentally strong pharma stocks\n\n' +
+                'Expected outcome: 8.5% → 6.2% volatility while maintaining returns.');
+            showNotification('✅ Optimization plan generated! Check your email for details.');
+        }
+    </script>
+</body>
+</html>
